@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<!--
+	Identity by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Identity by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/static/css/main.css" />
+		<noscript><link rel="stylesheet" href="/static/css/noscript.css" /></noscript>
+
+        <style>
+            #wrapper:before{
+                content: normal;
+            }
+
+            input[type="submit"].confirm:hover {
+				border-color: #76B041;
+				color: #76B041 !important;
+			}
+
+			input[type="submit"].rectify:hover {
+				border-color: #A72608;
+				color: #A72608 !important;
+			}
+        </style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main">
+						<header>
+							<h1>{{ label_pred }} WASTE</h1>
+						</header>
+
+                        <div class="fields">
+
+							<!-- If user confirm model prediction -->
+                            <div class="field">
+								<!-- green when hovering then grey again -->
+								<form method="POST" action="/confirmation">
+									<input type="hidden" name="type" value="{{ label_pred }}"/>
+									<input type="submit" class="confirm" value="Confirm"/>
+								</form>
+                            </div>
+
+							<!-- If user wants to rectify model prediction -->
+                            <div class="field">
+								<!-- red when hovering then grey again -->
+								<form method="POST" action="/rectify">
+									<input type="hidden" name="type" value="{{ label_pred }}"/>
+									<input type="submit" class="rectify" value="Rectify"/>
+								</form>
+
+                            </div>
+
+                        </div>
+
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
+					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+			</script>
+
+	</body>
+</html>
