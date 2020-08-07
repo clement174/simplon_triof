@@ -3,9 +3,7 @@ from src.utils import *
 
 
 app = Flask(__name__)
-
-with open("credentials.json") as f:
-    app.config['custom_vision_key'] = json.load(f)["api_key"]
+app.config['custom_vision_key'] = get_custom_vision_api_key("credentials.json")
 
 
 @app.route('/')

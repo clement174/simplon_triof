@@ -4,6 +4,14 @@ import random
 import requests
 
 
+def get_custom_vision_api_key(credentials_path):
+    # Parse custom vision api key from credentials.py
+    with open(credentials_path) as f:
+        api_key = json.load(f)["api_key"]
+
+    return api_key
+
+
 def open_waste_slot():
     """
         open the machine so that
@@ -70,7 +78,6 @@ def send_command_to_machine(command_name, value=None):
     return True
 
 
-
 def shred_waste():
 
     send_command_to_machine("shred_waste")
@@ -95,6 +102,7 @@ def take_trash_picture():
     path = random.choice(paths)
 
     return os.path.join("./camera", path)
+
 
 def classify_waste(trash_picture, api_key):
 
