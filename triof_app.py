@@ -3,7 +3,10 @@ from src.utils import *
 
 
 app = Flask(__name__)
-app.config['custom_vision_key'] = "ef35fbfdd31e4e2799b9529e0c57fa26"
+
+with open("credentials.json") as f:
+    app.config['custom_vision_key'] = json.load(f)["api_key"]
+
 
 @app.route('/')
 def home():
